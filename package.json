@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest --testEnvironment=node --runInBand ./tests",
     "start": "cross-env NODE_ENV=production node ./server.js",
     "start:dev": "cross-env NODE_ENV=development nodemon ./server.js"
   },
@@ -27,6 +27,8 @@
     "mongoose": "^6.3.6"
   },
   "devDependencies": {
+    "jest": "^28.1.1",
+    "mongodb-memory-server": "^6.9.0",
     "nodemon": "^2.0.16"
   }
 }

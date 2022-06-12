@@ -2,7 +2,7 @@ const { NotFound } = require('http-errors');
 const adsHelpers = require('../../helpers');
 
 const listAds = async (req, res) => {
-  const { name, page = 1, limit = 10, sort = '' } = req.query;
+  const { name = null, page = 1, limit = 10, sort = '' } = req.query;
   const ads = await adsHelpers.listAds(name, page, limit, sort);
 
   if (ads.length === 0 && name)
@@ -21,7 +21,7 @@ const getAdById = async (req, res) => {
   const { adId } = req.params;
   const { fields = '' } = req.query;
 
-  const result = await adsHelpers.getAdById(adId, fields);
+  const result = await adsHelpers.getAdById(adId, fields.toLowerCase());
 
   if (!result) throw new NotFound(`There is no ad with id ${adId}`);
 
