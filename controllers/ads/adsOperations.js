@@ -3,7 +3,7 @@ const adsHelpers = require('../../helpers');
 
 const listAds = async (req, res) => {
   const { name = null, page = 1, limit = 10, sort = '' } = req.query;
-  const ads = await adsHelpers.listAds(name, page, limit, sort);
+  const ads = await adsHelpers.listAds(name, page, limit, sort.toLowerCase());
 
   if (ads.length === 0 && name)
     throw new NotFound(`There is no ads with name ${name}. You need to provide the exact name value`);
