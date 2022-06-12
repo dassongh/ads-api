@@ -2,7 +2,6 @@ const db = require('./db');
 
 const adsHelpers = require('../helpers');
 const { getRequestBody } = require('./utils');
-const { ads } = require('../controllers');
 
 beforeAll(async () => await db.connect());
 afterEach(async () => await db.clearDatabase());
