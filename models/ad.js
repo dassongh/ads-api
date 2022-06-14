@@ -14,6 +14,7 @@ const adSchema = Schema(
   {
     name: {
       type: String,
+      maxLength: 200,
       required: [true, 'Ad should have a name'],
     },
     description: {
@@ -32,7 +33,7 @@ const adSchema = Schema(
 const Ad = model('ad', adSchema);
 
 const adJoiSchema = Joi.object({
-  name: Joi.string().required(),
+  name: Joi.string().max(200).required(),
   description: Joi.string().max(1000),
   images: Joi.array()
     .items(Joi.object({ path: Joi.string().required() }))
